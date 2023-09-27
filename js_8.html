@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #001F3F;
+    margin: 0;
+    }
+
+    .form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, yellow, rgb(218, 149, 218));
+    }
+
+    .form-container h2 {
+    color: #5543FF;
+    text-align: center;
+    }
+
+    .form-group {
+    margin-bottom: 15px;
+    }
+
+    .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    vertical-align: middle;
+    }
+
+    .form-group .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: flex-end; /* Align to the right side */
+    }
+
+    .form-group .checkbox-label input {
+    margin-left: 10px; /* Adjust spacing */
+    }
+
+    .error-message {
+    color: red;
+    }
+
+    .submit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Registration Form</h2>
+
+    <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName">
+    <span class="error-message" id="firstNameError"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName">
+        <span class="error-message" id="lastNameError"></span>
+        </div>
+
+        <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email">
+        <span class="error-message" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+        <span class="error-message" id="passwordError"></span>
+        </div>
+
+        <div class="form-group">
+        <label for="confirmPassword">Re-enter Password:</label>
+        <input type="password" id="confirmPassword">
+        <span class="error-message" id="confirmPasswordError"></span>
+        </div>
+
+    <div class="form-group">
+    <label for="gender">Gender:</label>
+    <div class="checkbox-label">
+        <label for="male">Male</label>
+        <input type="radio" id="male" name="gender" value="Male">
+    </div>
+    <div class="checkbox-label">
+        <label for="female">Female</label>
+        <input type="radio" id="female" name="gender" value="Female">
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age">
+        <span class="error-message" id="ageError"></span>
+        </div>
+
+        <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber">
+        <span class="error-message" id="phoneNumberError"></span>
+        </div>
+
+        <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" id="address">
+        <span class="error-message" id="addressError"></span>
+        </div>
+
+        <div class="form-group">
+        <label for="state">State:</label>
+        <input type="text" id="state">
+        <span class="error-message" id="stateError"></span>
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country">
+                <option value="">Choose your country</option>
+                <option value="USA">USA</option>
+                <option value="India">India</option>
+                <option value="UK">UK</option>
+            </select>
+            <span class="error-message" id="countryError"></span>
+            </div>
+
+    <div class="form-group">
+    <label>Languages Known:</label>
+    <div class="checkbox-label">
+        <label for="english">English</label>
+        <input type="checkbox" id="english" value="English">
+    </div>
+    <div class="checkbox-label">
+        <label for="kannada">Kannada</label>
+        <input type="checkbox" id="kannada" value="Kannada">
+    </div>
+    <div class="checkbox-label">
+        <label for="hindi">Hindi</label>
+        <input type="checkbox" id="hindi" value="Hindi">
+    </div>
+    <div class="checkbox-label">
+        <label for="telugu">Telugu</label>
+        <input type="checkbox" id="telugu" value="Telugu">
+    </div>
+    </div>
+
+    <!-- Rest of the form content... -->
+
+    <div class="form-group" >
+    <input type="checkbox" id="declaration"> Hereby I declare all the given details are true
+    </div>
+
+    <div class="form-group" style="text-align: right;">
+        <p id="login">Log in to <a href="https://ethnus.com/" target="_blank">Ethnus</a> website</p>
+    </div>
+
+    <button class="submit-button" onclick="register()">Register</button>
+</div>
+
+<script>
+    function register() {
+    // Validation logic for first name
+    const firstName = document.getElementById('firstName').value;
+    const firstNameError = document.getElementById('firstNameError');
+    if (!firstName) {
+        firstNameError.textContent = 'POOR';
+    } else {
+        firstNameError.textContent = '';
+    }
+    const lastName = document.getElementById('lastName').value;
+    const lastNameError = document.getElementById('lastNameError');
+    if (!lastName) {
+        lastNameError.textContent = 'POOR';
+    } else {
+        lastNameError.textContent = '';
+    }
+    const email = document.getElementById('email').value;
+    const emailError = document.getElementById('emailError');
+    if (!email) {
+        emailError.textContent = 'POOR';
+    } else {
+        emailError.textContent = '';
+    }
+    const password = document.getElementById('password').value;
+    const passwordError = document.getElementById('passwordError');
+    if (!password) {
+        passwordError.textContent = 'POOR';
+    } else {
+        passwordError.textContent = '';
+    }
+    const reenterPassword = document.getElementById('confirmPassword').value;
+    const reenterPasswordError = document.getElementById('confirmPasswordError');
+
+    if (!reenterPassword) {
+        reenterPasswordError.textContent = 'POOR OR MISMATCH';
+    } else if (reenterPassword !== password) {
+        reenterPasswordError.textContent = 'MISMATCH';
+    } else {
+        reenterPasswordError.textContent = '';
+    }
+    const age = document.getElementById('age').value;
+    const ageError = document.getElementById('ageError');
+    if (!age) {
+        ageError.textContent = 'POOR';
+    } else {
+        ageError.textContent = '';
+    }
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const phoneNumberError = document.getElementById('phoneNumberError');
+    if (!phoneNumber) {
+        phoneNumberError.textContent = 'POOR';
+    } else {
+        phoneNumberError.textContent = '';
+    }
+    const address = document.getElementById('address').value;
+    const addressError = document.getElementById('addressError');
+    if (!address) {
+        addressError.textContent = 'POOR';
+    } else {
+        addressError.textContent = '';
+    }
+    const state = document.getElementById('state').value;
+    const stateError = document.getElementById('stateError');
+    if (!state) {
+        stateError.textContent = 'POOR';
+    } else {
+        stateError.textContent = '';
+    }
+    }
+</script>
+</body>
+</html>

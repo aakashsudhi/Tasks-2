@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date and Time Display</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        div {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 5px 0 0 0;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Date Display</h2>
+        <button onclick="displayDate()">Show Date</button>
+        <p id="dateResult"></p>
+    </div>
+
+    <div>
+        <h2>Time Display (IST)</h2>
+        <button onclick="displayTimeIST()">Show Time in IST</button>
+        <p id="timeResult"></p>
+    </div>
+
+    <script>
+        function displayDate() {
+            const months = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            const currentDate = new Date();
+            const day = currentDate.getDate();
+            const month = months[currentDate.getMonth()];
+            const year = currentDate.getFullYear();
+
+            const formattedDate = `${day}/${month}/${year}`;
+            document.getElementById('dateResult').innerText = 'Date: ' + formattedDate;
+        }
+
+        function displayTimeIST() {
+            const options = {
+                timeZone: 'Asia/Kolkata',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                weekday: 'short',
+                month: 'short',
+                day: '2-digit',
+                year: 'numeric'
+            };
+
+            const istTime = new Date().toLocaleString('en-US', options);
+            document.getElementById('timeResult').innerText = 'Time in IST: ' + istTime;
+        }
+    </script>
+</body>
+
+</html>

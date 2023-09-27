@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .train-container {
+      position: relative;
+      width: 300px;
+      height: 100px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .train {
+      position: absolute;
+      width: 100px; /* Adjust the size of the train image */
+      height: auto;
+      left: -100px;
+      animation: moveTrain 2s linear infinite;
+    }
+
+    @keyframes moveTrain {
+      to {
+        left: calc(100% + 100px);
+      }
+    }
+
+    .button-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .button-container button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button-container button.start {
+      background-color: #357ABD;
+      color: white;
+    }
+
+    .button-container button.stop {
+      background-color: #FF4444;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="train-container">
+    <img src="train.png" alt="Train" class="train">
+  </div>
+  <div style="color: #357ABD; margin-top: 20px;">
+    Click the following buttons to handle animation:
+  </div>
+  <div class="button-container">
+    <button class="start" onclick="startAnimation()">Start</button>
+    <button class="stop" onclick="stopAnimation()">Stop</button>
+  </div>
+
+  <script>
+    let train = document.querySelector('.train');
+
+    function startAnimation() {
+      train.style.animationPlayState = 'running';
+    }
+
+    function stopAnimation() {
+      train.style.animationPlayState = 'paused';
+    }
+  </script>
+</body>
+</html>
